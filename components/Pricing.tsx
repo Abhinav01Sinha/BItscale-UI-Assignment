@@ -94,7 +94,8 @@ function Pricing({ interval }: { interval: string }) {
       {/* Added fade-up animation to Card*/}
       {schemes.map((scheme) => (
         <Card
-          className={`h-10/12 flex flex-col justify-between animate-fade-up ${
+          key={scheme.title}
+          className={`h-10/12 flex flex-col justify-between ${
             scheme.popular &&
             "bg-gradient-to-b from-[#1E429F] to-[#0B1839] text-white"
           }`}
@@ -148,8 +149,9 @@ function Pricing({ interval }: { interval: string }) {
               )}
             </CardHeader>
             <CardContent>
-              {scheme.features.map((feature) => (
+              {scheme.features.map((feature, ind) => (
                 <div
+                  key={ind}
                   className={`flex flex-row items-center gap-2 mb-3 mr-2 ${
                     scheme.popular
                       ? "text-white"
@@ -187,8 +189,8 @@ function Pricing({ interval }: { interval: string }) {
                   scheme.popular ? "text-white" : "text-gray-500"
                 } ml-4`}
               >
-                {scheme.footerPoints.map((feature) => (
-                  <li className="text-[14.5px] font-semibold mb-2">
+                {scheme.footerPoints.map((feature, ind) => (
+                  <li key={ind} className="text-[14.5px] font-semibold mb-2">
                     {feature}
                   </li>
                 ))}
